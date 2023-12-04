@@ -1,24 +1,16 @@
-import itertools
-import collections
-import heapq
-import math
-import functools
-
 with open("./day4/day4.txt") as data: data = [i.strip() for i in data.readlines()]
 
 def part1(data=data):
     counter = 0
     
-    cards = []
-
     for i in data:
-        winners, losers = i.split(": ")[1].split(" | ")
+        winners, hand = i.split(": ")[1].split(" | ")
         winners = [int(i) for i in winners.split()]
-        losers = [int(i) for i in losers.split()]
+        hand = [int(i) for i in hand.split()]
 
         x = .5
 
-        for l in losers:
+        for l in hand:
             if l in winners:
                 x*=2
         
@@ -31,12 +23,12 @@ def part2(data=data):
     cards = []
 
     for i in data:
-        winners, losers = i.split(": ")[1].split(" | ")
+        winners, hand = i.split(": ")[1].split(" | ")
         winners = [int(i) for i in winners.split()]
-        losers = [int(i) for i in losers.split()]
+        hand = [int(i) for i in hand.split()]
 
         x = 0
-        for b in losers:
+        for b in hand:
             if b in winners:
                 x+=1
 
